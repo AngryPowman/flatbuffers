@@ -19,6 +19,7 @@
 #include "flatbuffers/flatbuffers.h"
 #include "flatbuffers/idl.h"
 #include "flatbuffers/util.h"
+#include "flatbuffers/idl_extension.h"
 
 namespace flatbuffers {
 namespace cpp {
@@ -489,7 +490,7 @@ bool GenerateCPP(const Parser &parser,
                  const std::string &file_name) {
     auto code = GenerateCPP(parser, file_name);
     return !code.length() ||
-           SaveFile((path + file_name + "_generated.h").c_str(), code, false);
+        SaveFile((path + file_name + /*"_generated.h"*/sFilenameSuffix).c_str(), code, false);
 }
 
 }  // namespace flatbuffers
